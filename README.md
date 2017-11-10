@@ -184,3 +184,13 @@ http://stackoverflow.com/questions/17196766/can-resteasy-choose-method-based-on-
 ### JAX-RS中作POST的方法能够接收多个参数吗？
 
 http://stackoverflow.com/questions/5553218/jax-rs-post-multiple-objects
+
+### 如何开启zookeeper acl安全性设置？
+
+完善类：com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient，添加addAuthInfo进行验证。用法：
+zookeeper权限控制命令：
+1）创建用户：addauth digest dap:Passw0rd
+2）分配权限：setAcl /dubbo auth:dap:Passw0rd:crdwa 
+3）对应dubbo的配置，添加属性：username和password
+   <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" username="${dubbo.registry.username}" password="${dubbo.registry.password}"
+   check="false" />
