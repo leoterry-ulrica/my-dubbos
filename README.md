@@ -189,8 +189,14 @@ http://stackoverflow.com/questions/5553218/jax-rs-post-multiple-objects
 
 完善类：com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient，添加addAuthInfo进行验证。用法：
 zookeeper权限控制命令：
-1）创建用户：addauth digest dap:Passw0rd
-2）分配权限：setAcl /dubbo auth:dap:Passw0rd:crdwa 
-3）对应dubbo的配置，添加属性：username和password
+
+1）登录zookeeper，bin/zkCli.sh -server localhost:2181
+
+2）创建用户：addauth digest 用户名:密码
+
+3）分配权限：setAcl /dubbo auth:用户名:密码:crdwa 
+
+4）对应dubbo的配置，添加属性：username和password
+
    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" username="${dubbo.registry.username}" password="${dubbo.registry.password}"
    check="false" />
