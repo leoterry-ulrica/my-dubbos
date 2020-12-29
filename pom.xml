@@ -147,8 +147,8 @@
 
 		<!-- for maven compiler plugin -->
 		<maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
-		<java_source_version>1.7</java_source_version>
-		<java_target_version>1.6</java_target_version>
+		<java_source_version>1.8</java_source_version>
+		<java_target_version>1.8</java_target_version>
 		<file_encoding>UTF-8</file_encoding>
 
 		<maven_source_plugin_version>2.1.1</maven_source_plugin_version>
@@ -159,6 +159,18 @@
 
         <maven-surefire-plugin_version>2.17</maven-surefire-plugin_version>
 	</properties>
+	<!-- 发布 begin -->
+	<distributionManagement>
+		<repository>
+			<id>distcentral</id>
+			<url>http://host:port/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>distsnapshots</id>
+			<url>http://host:port/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<!-- 发布 end -->
 	<dependencyManagement>
 		<dependencies>
 			<!-- Common libs -->
